@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page>
+    <targets limit-post="2" method="getAttribute:href" method-val=""></targets>
+    <actions>
+        <action name="login-fill-username" url="" type="fill" value="datnguyen.it09@gmail.com" 
+                xpath-to=""></action>
+        <action name="login-fill-password" type="fill" value=""
+                xpath-to=""></action>
+        <action name="login-click-login" type="click" 
+                xpath-to=""></action>
+        <action name="wait" type="wait" value="3"></action>
+
+        <action name="share-post-click-share" url="" type="click"
+                xpath-to=""></action>
+        <action name="share-post-choose-share-to-public" type="click"
+                xpath-to=""></action>
+        <action name="like-post" type="click"
+                xpath-to=""></action>
+    </actions>
+</page>
