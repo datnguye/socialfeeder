@@ -3,7 +3,7 @@ from lxml import etree
 import os
 from socialfeeder.utilities.common import ObjectView, save_to_json_file
 
-def parse(path:str):
+def parse(path:str, save:bool=False):
     '''
     Parse xml document to dict object
     '''
@@ -36,7 +36,8 @@ def parse(path:str):
 
         results.append(ObjectView(result))
         
-    save_to_json_file(results[0].origin, path.replace('.xml', '.json'))
+    if save:
+        save_to_json_file(results[0].origin, path.replace('.xml', '.json'))
     return results
 
 

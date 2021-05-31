@@ -5,7 +5,7 @@ def run(social:str=None, config:dict=None):
     '''
     run
     '''
-    config_obj = configuration.parse(config)
+    config_obj = configuration.parse(config, save=True)
     if social == 'facebook':
         facebook.run(config_obj)
     else:
