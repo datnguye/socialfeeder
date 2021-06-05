@@ -15,7 +15,7 @@ def parse(path:str, save:bool=False):
     
     # Load xml schema - xsd to validate
     xsd_path = f'{os.path.dirname(os.path.realpath(__file__))}/configuration.xsd'
-    # valid, message = validate(xml_path=path, xsd_path=xsd_path)
+    # valid, message = _validate(xml_path=path, xsd_path=xsd_path)
     # if not valid:
     #     print(f'ERROR: Failed at validation with message: {message}')
     #     return None
@@ -26,7 +26,7 @@ def parse(path:str, save:bool=False):
         # result - base
         result = {
             "config_at": os.path.abspath(path),
-            "actions": parse_actions(page.find("actions"))
+            "actions": _parse_actions(page.find("actions"))
         }
 
         results.append(ObjectView(result))
@@ -36,7 +36,7 @@ def parse(path:str, save:bool=False):
     return results
 
 
-def parse_actions(soup):
+def _parse_actions(soup):
     '''
     Function to parse "action" nodes
     '''
@@ -50,7 +50,7 @@ def parse_actions(soup):
             default_value = '3' # wait ~3 seconds
 
         actions.append({
-            "name": a.get("name") or "not-set",
+            "name": a.get("name") or f'{a.get("type")} to {(a.get("xpath-to") or "")[0:10]}',
             "url": a.get("url") or '',
             "type": a.get("type"),
             "value": a.get("value") or default_value,
@@ -59,7 +59,7 @@ def parse_actions(soup):
     
     return actions
 
-def validate(xml_path:str, xsd_path:str) -> bool:
+def _validate(xml_path:str, xsd_path:str) -> bool:
     '''
     Validate xml schema of the config file
     '''

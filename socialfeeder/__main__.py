@@ -1,16 +1,18 @@
-import argparse, sys
+import argparse
+import sys
 from socialfeeder import feeder
+from socialfeeder.utilities.constants import __VERSION__, FEEDER_FACEBOOK
 
 def main():
     parser = argparse.ArgumentParser(prog='feeder')
-    parser.add_argument('-v','--version', action='version', version='%(prog)s 1.0.0')
+    parser.add_argument('-v','--version', action='version', version='%(prog)s ' + __VERSION__)
 
-    parser.add_argument('--social',            help='Social network name', type=str, default='facebook')
-    parser.add_argument('--config',            help='Configuration file', type=str, default='facebook')
+    parser.add_argument('--social', help='Social network name', type=str, default=FEEDER_FACEBOOK)
+    parser.add_argument('--config', help='Configuration file path (.xml)', type=str)
 
     args = parser.parse_args()
-    feeder.run( social      = args.social,
-                config      = args.config)
+    feeder.run( social = args.social,
+                config = args.config)
 
 if __name__ == '__main__':
     main()
