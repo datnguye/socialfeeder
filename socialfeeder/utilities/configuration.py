@@ -44,16 +44,15 @@ def _parse_actions(soup):
     for a in soup.find_all("action", recursive=False):
         default_value = ''
         action_type = a.get("type")
-        if action_type == ACTION_TYPE_BROWSE:
-            default_value = '1' # scroll down 1 time 
-        elif action_type == ACTION_TYPE_WAIT:
-            default_value = '3' # wait ~3 seconds
+        if action_type == ACTION_TYPE_CLICK:
+            default_value = '1' # click max 1 element
 
         actions.append({
             "name": a.get("name") or f'{a.get("type")} to {(a.get("xpath-to") or "")[0:10]}',
             "url": a.get("url") or '',
-            "type": a.get("type"),
+            "type": action_type,
             "value": a.get("value") or default_value,
+            "bypass_error": True if (a.get("bypass-error") or 'false').lower() in ['true', '1'] else False,
             "xpath_to": a.get("xpath-to") or ''
         })
     

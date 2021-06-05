@@ -12,7 +12,7 @@ def run(config, debug:bool=True):
     
     if debug: print(f'[feeder] Starting feeding...')
     if debug: print(f'[feeder]  Open new driver instance.')
-    driver = chrome.get_instance(headless=True)
+    driver = chrome.get_instance(headless=False)
 
     if debug: print(f'[feeder]  Running actions...')
     for action_group in config:
@@ -39,23 +39,52 @@ def run(config, debug:bool=True):
 
 def _do_wait(driver, action, debug:bool=False, indent:int=1):
     if debug: print(f'[feeder] {" "*indent}Doing {action.name}')
-    chrome.browse()
+    try:
+        chrome.browse(driver)
+    except Exception as e:
+        if not action.bypass_error:
+            return (-1, f'{action.name} failed with message: {str(e)}')
     
     return (0, f'{action.name} succeeded')
 
 
 def _do_browse(driver, action, debug:bool=False, indent:int=1):
     if debug: print(f'[feeder] {" "*indent}Doing {action.name}')
+    try:
+        chrome.scroll_down_bottom(driver)
+    except Exception as e:
+        if not action.bypass_error:
+            return (-1, f'{action.name} failed with message: {str(e)}')
 
     return (0, f'{action.name} succeeded')
 
 
 def _do_click(driver, action, debug:bool=False, indent:int=1):
     if debug: print(f'[feeder] {" "*indent}Doing {action.name}')
+    try:
+        elements = driver.find_elements_by_xpath(action.xpath_to)
+
+        limit = len(elements)
+        if limit > int(action.value):
+            limit = int(action.value)
+        elements = elements[0:limit]
+        for e in elements:
+            e.click()
+    except Exception as e:
+        if not action.bypass_error:
+            return (-1, f'{action.name} failed with message: {str(e)}')
+
     return (0, f'{action.name} succeeded')
 
     
 def _do_fill(driver, action, debug:bool=False, indent:int=1):
     if debug: print(f'[feeder] {" "*indent}Doing {action.name}')
+    try:
+        elements = driver.find_elements_by_xpath(action.xpath_to)
+        for e in elements:
+            e.send_keys(action.value)
+    except Exception as e:
+        if not action.bypass_error:
+            return (-1, f'{action.name} failed with message: {str(e)}')
     return (0, f'{action.name} succeeded')
 

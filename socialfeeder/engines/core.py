@@ -6,8 +6,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 import random as r
 import itertools
 import time
-from selenium.common.exceptions import TimeoutException
-import random
 
 def get_instance(headless=True, proxies=[], cookie:dict=None) -> webdriver:
     '''
