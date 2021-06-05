@@ -1,0 +1,4 @@
+ACTION_TYPE_CLICK = 'click'
+ACTION_TYPE_FILL = 'fill'
+ACTION_TYPE_WAIT = 'wait'
+ACTION_TYPE_BROWSE = 'browse'

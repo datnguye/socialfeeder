@@ -2,6 +2,7 @@ import bs4
 from lxml import etree
 import os
 from socialfeeder.utilities.common import ObjectView, save_to_json_file
+from socialfeeder.utilities.constants import *
 
 def parse(path:str, save:bool=False):
     '''
@@ -25,12 +26,6 @@ def parse(path:str, save:bool=False):
         # result - base
         result = {
             "config_at": os.path.abspath(path),
-            "targets": {
-                "limit_post": page.find("targets").get("limit-post"),
-                "method": page.find("targets").get("method").split(':')[0],
-                "attr": page.find("targets").get("method").split(':')[1],
-                "method_val": page.find("targets").get("method-val")
-            },
             "actions": parse_actions(page.find("actions"))
         }
 
@@ -47,11 +42,18 @@ def parse_actions(soup):
     '''
     actions = []
     for a in soup.find_all("action", recursive=False):
+        default_value = ''
+        action_type = a.get("type")
+        if action_type == ACTION_TYPE_BROWSE:
+            default_value = '1' # scroll down 1 time 
+        elif action_type == ACTION_TYPE_WAIT:
+            default_value = '3' # wait ~3 seconds
+
         actions.append({
             "name": a.get("name") or "not-set",
             "url": a.get("url") or '',
             "type": a.get("type"),
-            "value": a.get("value") or '',
+            "value": a.get("value") or default_value,
             "xpath_to": a.get("xpath-to") or ''
         })
     
