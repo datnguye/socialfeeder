@@ -15,12 +15,11 @@
         <action name="browse news feed" type="browse"></action>
         <action name="wait" type="wait" value="10"></action>
 
-        <action name="browse Hecu feed" url='https://www.facebook.com/taphoatrahoa/' type="browse"></action>
-        <action name="wait to load the posts" type="wait" value="10"></action>
-
+        <action name="On top Hecu feed" url='https://www.facebook.com/taphoatrahoa/' type="wait" value="10"></action>
         <action name="like top 5 Hecu posts"
                 type="click" value="5" xpath-to='((//div[@role="main"])[position()>1]/div/div)//span[text()="Thích"]'></action>
-
+                
+        <action name="On top Hecu feed" url='https://www.facebook.com/taphoatrahoa/' type="wait" value="5"></action>
         <action name="click share post 1"
                 type="click" xpath-to='(((//div[@role="main"])[position()>1]/div/div)//span[text()="Chia sẻ"])[position()=1]'></action>
         <action name="wait to load share dialog" type="wait" value="10"></action>

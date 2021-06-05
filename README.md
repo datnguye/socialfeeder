@@ -18,7 +18,7 @@ python -m socialfeeder --help
 Sample commands:
 * Run facebook:
 ```
-python -m socialfeeder --social "facebook" --config "C:\Users\DAT\Documents\Sources\socialfeeder\samples\feed-fb-post.xml"
+python -m socialfeeder --social "facebook" --config "C:\Users\DAT\Documents\Sources\socialfeeder\samples\like_top_5-share_2-posts.xml" --feed
 ```
 
 ## Development Enviroment
