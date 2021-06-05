@@ -46,6 +46,8 @@ def _parse_actions(soup):
         action_type = a.get("type")
         if action_type == ACTION_TYPE_CLICK:
             default_value = '1' # click max 1 element
+        elif action_type == ACTION_TYPE_WAIT:
+            default_value = '3' # click max 1 element
 
         actions.append({
             "name": a.get("name") or f'{a.get("type")} to {(a.get("xpath-to") or "")[0:10]}',

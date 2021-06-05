@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.action_chains import ActionChains
 import random as r
 import itertools
 import time
@@ -17,14 +18,15 @@ def get_instance(headless=True, proxies=[], cookie:dict=None) -> webdriver:
     '''
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
+    options.add_argument("start-maximized")
     options.add_argument('--disable-dev-shm-usage'); # overcome limited resource problems
     options.add_argument('--no-sandbox'); # Bypass OS security model
 
+    # Bypass notification
+    options.add_experimental_option("prefs", {"profile.default_content_setting_values.notifications" : 2})
+
     if proxies:
-        chrome_options.add_argument('--proxy-server=%s' % random.choices(proxies))
-    
-    if cookie:
-        driver.add_cookie(cookie)
+        options.add_argument('--proxy-server=%s' % random.choices(proxies))
     
     if headless:
         options.add_argument('--headless')
@@ -34,7 +36,12 @@ def get_instance(headless=True, proxies=[], cookie:dict=None) -> webdriver:
         options.add_argument('--disable-gpu')
         options.add_argument('--log-level=3') 
     
-    return webdriver.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=options)
+    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=options)
+    if cookie:
+        driver.add_cookie(cookie)
+
+    return driver
+
 
 
 def scroll_down(driver, height = 0):
@@ -80,3 +87,8 @@ def browse(driver, element_id=None) -> webdriver:
 
 def get_page_source(driver) -> str:
     return driver.page_source
+
+
+def click(driver, e) -> str:
+    action = ActionChains(driver)
+    action.move_to_element(e).click(e).perform()
