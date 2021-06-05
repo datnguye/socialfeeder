@@ -8,6 +8,7 @@ setup(
      author='datnguye',
      author_email='datnguyen.it09@gmail.com',
      packages=find_packages(),
+    include_package_data=True,
      url='https://github.com/datnguye',
      license='MIT',
      description='A package to feed things on social',
