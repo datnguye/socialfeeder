@@ -9,10 +9,12 @@ def main():
 
     parser.add_argument('--social', help='Social network name', type=str, default=FEEDER_FACEBOOK)
     parser.add_argument('--config', help='Configuration file path (.xml)', type=str)
+    parser.add_argument('--headless', help='Headless mode', type=bool, default=True)
 
     args = parser.parse_args()
-    feeder.run( social = args.social,
-                config = args.config)
+    feeder.run( social      = args.social,
+                config      = args.config,
+                headless    = args.headless)
 
 if __name__ == '__main__':
     main()

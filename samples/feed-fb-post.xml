@@ -20,12 +20,16 @@
 
         <action name="like top 5 Hecu posts"
                 type="click" value="5" xpath-to='((//div[@role="main"])[position()>1]/div/div)//span[text()="Thích"]'></action>
+
         <action name="click share post 1"
                 type="click" xpath-to='(((//div[@role="main"])[position()>1]/div/div)//span[text()="Chia sẻ"])[position()=1]'></action>
+        <action name="wait to load share dialog" type="wait" value="10"></action>
         <action name="click share post 1 to news feed"
                 type="click" xpath-to='//span[contains(text(),"Chia sẻ ngay")]'></action>
+
         <action name="click share post 2"
                 type="click" xpath-to='(((//div[@role="main"])[position()>1]/div/div)//span[text()="Chia sẻ"])[position()=2]'></action>
+        <action name="wait to load share dialog" type="wait" value="10"></action>
         <action name="click share post 2 to news feed"
                 type="click" xpath-to='//span[contains(text(),"Chia sẻ ngay")]'></action>
     </actions>

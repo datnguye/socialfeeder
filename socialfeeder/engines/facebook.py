@@ -4,7 +4,7 @@ from datetime import datetime
 import time
 import random as r
 
-def run(config, debug:bool=True):
+def run(config, debug:bool=True, headless:bool=True):
     
     result = {
         'start_at': datetime.now(),
@@ -13,7 +13,7 @@ def run(config, debug:bool=True):
     
     if debug: print(f'[feeder] Starting feeding...')
     if debug: print(f'[feeder]  Open new driver instance.')
-    driver = chrome.get_instance(headless=False)
+    driver = chrome.get_instance(headless=headless)
 
     if debug: print(f'[feeder]  Running actions...')
     for action_group in config:
