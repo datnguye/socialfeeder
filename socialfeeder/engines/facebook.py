@@ -71,7 +71,7 @@ def _do_browse(driver, action, debug:bool=False, indent:int=1):
 def _do_scroll_down(driver, action, debug:bool=False, indent:int=1):
     if debug: print(f'[feeder] {"    "*indent}Doing {action.name}')
     try:
-        chrome.scroll_down(driver)
+        chrome.scroll_down(driver, height=int(action.value))
     except Exception as e:
         if not action.bypass_error:
             return (-1, f'{action.name} failed with message: {str(e)}')
