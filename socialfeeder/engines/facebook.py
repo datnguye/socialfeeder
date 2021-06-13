@@ -29,6 +29,8 @@ def run(config, debug:bool=True, headless:bool=True):
                 code, res = _do_click(driver, action, debug=debug)
             elif action.type == ACTION_TYPE_FILL:
                code, res =  _do_fill(driver, action, debug=debug)
+            elif action.type == ACTION_TYPE_SCROLL_DOWN:
+               code, res =  _do_scroll_down(driver, action, debug=debug)
             else:
                 code, res = -1, 'Non-support action'
                 if debug: print(f'[feeder]      Non-support action! Please contact ADMIN.')
@@ -59,6 +61,17 @@ def _do_browse(driver, action, debug:bool=False, indent:int=1):
     if debug: print(f'[feeder] {"    "*indent}Doing {action.name}')
     try:
         chrome.scroll_down_bottom(driver)
+    except Exception as e:
+        if not action.bypass_error:
+            return (-1, f'{action.name} failed with message: {str(e)}')
+
+    return (0, f'{action.name} succeeded')
+
+
+def _do_scroll_down(driver, action, debug:bool=False, indent:int=1):
+    if debug: print(f'[feeder] {"    "*indent}Doing {action.name}')
+    try:
+        chrome.scroll_down(driver)
     except Exception as e:
         if not action.bypass_error:
             return (-1, f'{action.name} failed with message: {str(e)}')

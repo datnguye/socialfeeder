@@ -4,5 +4,6 @@ ACTION_TYPE_CLICK = 'click'
 ACTION_TYPE_FILL = 'fill'
 ACTION_TYPE_WAIT = 'wait'
 ACTION_TYPE_BROWSE = 'browse'
+ACTION_TYPE_SCROLL_DOWN = 'scroll-down'
 
 FEEDER_FACEBOOK = 'facebook'
