@@ -52,7 +52,7 @@ def _do_save_text(driver, action, debug:bool=False, indent:int=1):
         elements = driver.find_elements_by_xpath(action.xpath_to)
         for element in elements:
             with open(action.value, 'a', encoding='utf8') as file:
-                file.write(element.text)
+                file.write((element.text or "").strip())
                 file.write("\n")
     except Exception as e:
         if not action.bypass_error:
