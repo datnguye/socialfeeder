@@ -1,9 +1,8 @@
-__VERSION__ = '1.0.0'
-
 ACTION_TYPE_CLICK = 'click'
 ACTION_TYPE_FILL = 'fill'
 ACTION_TYPE_WAIT = 'wait'
 ACTION_TYPE_BROWSE = 'browse'
 ACTION_TYPE_SCROLL_DOWN = 'scroll-down'
+ACTION_TYPE_SAVE_TEXT = 'save-text'
 
 FEEDER_FACEBOOK = 'facebook'

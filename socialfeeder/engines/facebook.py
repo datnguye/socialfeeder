@@ -31,6 +31,8 @@ def run(config, debug:bool=True, headless:bool=True):
                code, res =  _do_fill(driver, action, debug=debug)
             elif action.type == ACTION_TYPE_SCROLL_DOWN:
                code, res =  _do_scroll_down(driver, action, debug=debug)
+            elif action.type == ACTION_TYPE_SAVE_TEXT:
+               code, res =  _do_save_text(driver, action, debug=debug)
             else:
                 code, res = -1, 'Non-support action'
                 if debug: print(f'[feeder]      Non-support action! Please contact ADMIN.')
@@ -42,6 +44,20 @@ def run(config, debug:bool=True, headless:bool=True):
     if debug: print(f'[feeder] Finished.')
 
     return result
+
+    
+def _do_save_text(driver, action, debug:bool=False, indent:int=1):
+    if debug: print(f'[feeder] {"    "*indent}Doing {action.name}')
+    try:
+        elements = driver.find_elements_by_xpath(action.xpath_to)
+        for element in elements:
+            with open(action.value, 'a', encoding='utf8') as file:
+                file.write(element.text)
+                file.write("\n")
+    except Exception as e:
+        if not action.bypass_error:
+            return (-1, f'{action.name} failed with message: {str(e)}')
+    return (0, f'{action.name} succeeded')
 
 
 def _do_wait(driver, action, debug:bool=False, indent:int=1):

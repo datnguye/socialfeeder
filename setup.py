@@ -1,6 +1,6 @@
 from setuptools import setup
 from setuptools import find_packages
-from socialfeeder.utilities.constants import __VERSION__
+from socialfeeder import __VERSION__
 
 setup(
      name='socialfeeder',

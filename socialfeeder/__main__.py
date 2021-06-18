@@ -1,7 +1,7 @@
 import argparse
 import sys
-from socialfeeder import feeder
-from socialfeeder.utilities.constants import __VERSION__, FEEDER_FACEBOOK
+from socialfeeder import feeder, __VERSION__
+from socialfeeder.utilities.constants import FEEDER_FACEBOOK
 
 def main():
     parser = argparse.ArgumentParser(prog='feeder')
