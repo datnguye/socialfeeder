@@ -27,5 +27,5 @@ jobs:
           command: python setup.py sdist bdist_wheel
       - run:
           name: publish pip
-          command: python -m twine upload --skip-existing dist/* -u datnguye -p $PYPI_PASSWORD
+          command: python -m twine upload --skip-existing dist/* -u datnguye -p $PYPI_PASSWORD --verbose 
           
