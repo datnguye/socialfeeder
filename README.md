@@ -1,4 +1,6 @@
 # socialfeeder
+[![CircleCI](https://circleci.com/gh/datnguye/socialfeeder.svg?style=svg)](https://circleci.com/gh/datnguye/socialfeeder)
+
 Mini CLI to feed social activities with supported actions:
 * click
 * fill
