@@ -40,9 +40,14 @@ python -m socialfeeder --help
 ```
 
 Sample commands:
+
 ** Run facebook:
 ```
-python -m socialfeeder --social "facebook" --config "C:\Users\DAT\Documents\Sources\socialfeeder\samples\like_top_5-share_2-posts.xml" --feed
+python -m \
+    socialfeeder \
+    --social "facebook" \
+    --config ".\samples\like_top_5-share_2-posts.xml" \
+    --head
 ```
 
 * Using docker
@@ -50,6 +55,7 @@ python -m socialfeeder --social "facebook" --config "C:\Users\DAT\Documents\Sour
 
 
 ## BUILD
+[pip build](PUBLISH)
 [docker build](Docker.md)
 
 ## Development Enviroment
