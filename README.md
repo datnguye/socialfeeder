@@ -23,18 +23,25 @@ python -m socialfeeder --version
 ```
 docker pull tuiladat/socialfeeder:latest
 ```
-[How to run](Docker.md#run-containter)
 
 ## Usage
+* Using pip
 ```
 python -m socialfeeder --help
 ```
 
 Sample commands:
-* Run facebook:
+** Run facebook:
 ```
 python -m socialfeeder --social "facebook" --config "C:\Users\DAT\Documents\Sources\socialfeeder\samples\like_top_5-share_2-posts.xml" --feed
 ```
+
+* Using docker
+[docker run](Docker.md#run-containter)
+
+
+## BUILD
+[docker build](Docker.md)
 
 ## Development Enviroment
 Virtual enviroment:
