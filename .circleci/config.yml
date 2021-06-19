@@ -20,7 +20,7 @@ workflows:
       - build
 
 jobs:
-  build:
+  base:
     docker:
       - image: cimg/python:3.8
     steps:
@@ -33,9 +33,21 @@ jobs:
       - run:
           name: install twine
           command: python -m pip install --upgrade twine
+  build:
+    docker:
+      - image: cimg/python:3.8
+    steps:
+      - checkout
       - run:
           name: packing
           command: python setup.py sdist bdist_wheel
+  publish:
+    docker:
+      - image: cimg/python:3.8
+    steps:
+      - run:
+          name: publish pip
+          command: python -m twine upload --skip-existing dist/* -u datnguye -p $PYPI_PASSWORD
 
   build-and-test:  # This is the name of the job, feel free to change it to better match what you're trying to do!
     # These next lines defines a Docker executors: https://circleci.com/docs/2.0/executor-types/
