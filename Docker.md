@@ -1,13 +1,13 @@
-* Dockerfile
+### Dockerfile
 [Here](Dockerfile)
 
-* Build image:latest
+### Build image:latest
 ```
 # docker rmi socialfeeder
-docker build --tag socialfeeder:latest .
+docker build --tag tuiladat/socialfeeder:latest .
 ```
 
-* Run containter
+### Run containter
 ```
 # remove exists container:
 docker rm socialfeeder
