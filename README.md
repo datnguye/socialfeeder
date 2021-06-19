@@ -19,7 +19,7 @@ python -m pip install git+https://github.com/datnguye/socialfeeder.git --upgrade
 python -m socialfeeder --version
 ```
 
-* From [docker hub](https://hub.docker.com/repository/docker/tuiladat/socialfeeder/general)
+* From [docker hub](https://hub.docker.com/r/tuiladat/socialfeeder)
 ```
 docker pull tuiladat/socialfeeder:latest
 ```
