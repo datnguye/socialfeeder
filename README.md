@@ -24,6 +24,13 @@ python -m socialfeeder --version
 docker pull tuiladat/socialfeeder:latest
 ```
 
+* From [source code](https://github.com/datnguye/socialfeeder)
+```
+git clone https://github.com/datnguye/socialfeeder.git
+cd socialfeeder
+python -m pip install -e . --upgrade
+```
+
 ## Usage
 * Using pip
 ```
