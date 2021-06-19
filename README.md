@@ -55,8 +55,8 @@ python -m \
 
 
 ## BUILD
-[pip build](PUBLISH)
-[docker build](Docker.md)
+* [pip build](PUBLISH)
+* [docker build](Docker.md)
 
 ## Development Enviroment
 Virtual enviroment:
