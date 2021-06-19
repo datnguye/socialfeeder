@@ -2,6 +2,11 @@ from setuptools import setup
 from setuptools import find_packages
 from socialfeeder import __VERSION__
 
+install_requires = []
+with open("requirements.txt", "r") as f:
+  content = f.read()
+  install_requires.extend(content.splitlines())
+
 setup(
      name='socialfeeder',
      version=__VERSION__,
@@ -14,12 +19,7 @@ setup(
      description='A package to feed things on social',
      long_description_content_type="text/markdown",
      long_description=open('README.md').read(),
-     install_requires=[
-       'selenium==3.141.0',
-       'webdriver-manager==2.5.3',
-       'beautifulsoup4==4.9.1',
-       'lxml==4.6.1',
-     ],
+     install_requires=install_requires,
      python_requires='>=3.7.5',
      entry_points = {
         'console_scripts': [

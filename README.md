@@ -1,12 +1,14 @@
 # socialfeeder
 Mini CLI to feed social activities with supported actions:
-* Click
-* Fill
-* Browse
-* Scroll down
-* Wait
+* click
+* fill
+* browse
+* scroll down
+* wait
+* save-text
 
 Installation:
+* From [pip](https://pypi.org/project/socialfeeder/) 
 ```
 python -m pip install socialfeeder --upgrade
 
@@ -16,6 +18,8 @@ python -m pip install git+https://github.com/datnguye/socialfeeder.git --upgrade
 # check version
 python -m socialfeeder --version
 ```
+
+* From [docker hub]() 
 
 
 ## Usage

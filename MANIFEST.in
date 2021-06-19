@@ -1,4 +1,4 @@
 include README.md
 include socialfeeder/utilities/*.xsd
 include samples/*.xml
-exclude setup.py
+include requirements.txt
