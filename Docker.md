@@ -3,7 +3,7 @@
 
 ### Build image:latest
 ```
-# docker rmi socialfeeder
+# docker rmi tuiladat/socialfeeder
 docker build --tag tuiladat/socialfeeder:latest .
 ```
 
@@ -13,13 +13,18 @@ docker build --tag tuiladat/socialfeeder:latest .
 docker rm socialfeeder
 
 # run with default arguments
-docker run --name "socialfeeder" --env CONFIG="/samples/noexist.xml" socialfeeder
+docker run --name "socialfeeder" tuiladat/socialfeeder
 
 # run with custom arguments
 docker run \
     --name "socialfeeder" \
     --env SOCIAL="facebook" \
     --env CONFIG="/samples/noexist.xml" \
-    socialfeeder
+    tuiladat/socialfeeder
 ```
 
+
+### Publish to Hub
+```
+docker push tuiladat/socialfeeder:latest
+```
