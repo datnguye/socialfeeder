@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page>
+    <actions>
+        <action name="login fill username" url="https://www.facebook.com/login"
+                type="fill" value="YOUR_USER_NAME" xpath-to='//*[@id="email"]'></action>
+        <action name="login fill password"
+                type="fill" value="YOUR_PASSWORD" xpath-to='//*[@id="pass"]'></action>
+        <action name="wait"
+                type="wait" value="5"></action>
+        <action name="login lick login" 
+                type="click" xpath-to='//*[@id="loginbutton"]'></action>
+        <action name="skip phone no update" bypass-error='true'
+                type="click" xpath-to='//*[@id="notNowBox"]/label/input'></action>
+
+        <action name="wait" type="wait" value="10"></action>
+
+        <action name="On top Hecu feed" url='https://www.facebook.com/YOUR_TARGET_ID' type="wait" value="10"></action>
+        <action name="Open new post"
+                type="click" value="1" xpath-to='//a[@href="https://www.facebook.com/YOUR_FB_ID"]/../div'></action>
+        
+        <action name="wait" type="wait" value="10"></action>
+        <action name="Enter post"
+                type="fill" value="YOUR_MESSAGE" xpath-to='//div[contains(@aria-label,"Write something to")]'></action>
+                
+        <action name="wait" type="wait" value="100"></action>
+        
+        <action name="Open new post"
+                type="click" value="1" xpath-to='//div[@aria-label="Post"]'></action>
+        
+        <action name="wait" type="wait" value="10"></action>
+                
+    </actions>
+</page>
